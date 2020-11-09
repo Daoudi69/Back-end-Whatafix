@@ -14,25 +14,7 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create();
-        $powers = [];
-        for ($i=0; $i < 5; $i++) { 
-            $power = new Power();
-            $power->setName('power '.$i)->setType('type '.$i);
-            $manager->persist($power);
-            $powers[] = $power;
-        }
 
-        for ($i=0; $i < 5 ; $i++) { 
-            $hero = new Hero();
-            $hero->setName($faker->name)
-            ->setLevel($faker->randomNumber())
-            ->setBirthdate($faker->dateTime())
-            ->setTitle('The Great ' . $faker->firstName);
-            for ($y=0; $y < 2; $y++) { 
-                $hero->addPower($powers[random_int(0, 4)]);
-            }
-            $manager->persist($hero);
-        }
 
 
         $user = new User();
